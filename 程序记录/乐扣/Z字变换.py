@@ -30,3 +30,17 @@ def convert(self, s: str, numRows: int) -> str:
             str1+=''.join(matrix[i])
         str1=str1.replace(" ","")
         return str1
+
+"""
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows < 2: return s
+        res = ["" for _ in range(numRows)]
+        i, flag = 0, -1
+        for c in s:
+            res[i] += c
+            if i == 0 or i == numRows - 1: flag = -flag
+            i += flag
+        return "".join(res)
+
+"""
