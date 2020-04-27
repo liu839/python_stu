@@ -37,4 +37,4 @@ while True:
     msg="翻译结果是%s"%(target['translateResult'][0][0]['tgt'])
     e.msgbox(msg=msg)
 
-    time.sleep(3)
+    time.sleep(1)
