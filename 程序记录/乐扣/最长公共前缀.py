@@ -1,5 +1,5 @@
 def x(strs):
-    #        return os.path.commonprefix(strs)  #less is more
+    #        return os.path.commonprefix(strs) 
     l=len(strs)
     if l==0 or ("" in strs):
         return ""
@@ -16,7 +16,7 @@ def x(strs):
             except IndexError:
                 return str_
         if j==l-1:
-                str_+=strs[index][i]
+            str_+=strs[index][i]
             i+=1
             j=0
         else:

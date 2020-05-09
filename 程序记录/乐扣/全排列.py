@@ -36,6 +36,6 @@ print(solv([1,2,3]))
         
         res = []
         solv([], nums)
-        return ans
+        return res
 """
             
