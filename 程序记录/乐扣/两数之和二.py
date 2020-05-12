@@ -1,4 +1,3 @@
-import time
 def solv(numbers,target):
     n = len(numbers)
     if n < 2:
