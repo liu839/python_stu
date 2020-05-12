@@ -23,14 +23,16 @@ def count(name):
     f.close
 
 def search(list1,temp_dir):
+    #print("正在检索文件夹"+temp_dir)
     try:
         list1=os.listdir()
     except PermissionError:
         return
     for each in list1:
-        print("正在检索文件"+each)
+        #print("正在检索文件"+each)
         if os.path.isdir(each):
-
+            if '$' in each:
+                continue
             temp_dir2=temp_dir+'/'+each
             try:
                 os.chdir(temp_dir2)
@@ -45,7 +47,7 @@ def search(list1,temp_dir):
             eg.msgbox(msg=temp9,title=title)
             temp_10=eg.buttonbox(msg='是否继续',choices=("是","否"))
             if temp_10=='否':
-                raise EOFError
+                return
             #print("发现文件,位置为%s\n"%(temp8))
             #count(temp8)
 search(list1,temp_dir)
