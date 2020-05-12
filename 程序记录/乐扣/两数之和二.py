@@ -13,10 +13,3 @@ def solv(numbers,target):
         else:
             right -= 1
     return[left,right]
-
-a=time.time()
-for _ in range(19999):
-    solv([2,7,11,15],9)
-b=time.time()
-c=b-a
-print(c)
