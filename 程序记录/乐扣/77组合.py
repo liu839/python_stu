@@ -1,7 +1,6 @@
 def combine(n: int, k: int):
-    if k==1:
-        #处理意外状况
-        return [[i]for i in range(1,n+1)]
+    if n <= 0 or k <= 0 or k > n:
+        return []
     temp=[ i for i in range(1,n+1)]
     res=[]
 
@@ -23,5 +22,6 @@ def combine(n: int, k: int):
             count(base_temp[:],list_temp[list_temp.index(each)+1:],k-1)
             base_temp.pop()
     count([],temp,k)
+    return res
 
 combine(5,3)
