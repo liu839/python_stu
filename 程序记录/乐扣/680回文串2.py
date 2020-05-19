@@ -13,26 +13,26 @@ class Solution():
 """
 
 def x(s):
-        if not s:
-            return None
-        low_=0
-        high_=len(s)-1
-        i=0
-        def solv(s,low,high):
-            nonlocal low_,high_,i
-            while low<high:
-                if s[low]!=s[high]:
-                    if i==0:
-                        low_=low
-                        high_=high
-                        i+=1
-                    return False
-                low+=1
-                high-=1
-            return True
-        if solv(s,low_,high_):
-            return True
-        else:
-            return solv(s,low_+1,high_) or solv(s,low_,high_-1)
+    if not s:
+        return None
+    low_=0
+    high_=len(s)-1
+    i=0
+    def solv(s,low,high):
+        nonlocal low_,high_,i
+        while low<high:
+            if s[low]!=s[high]:
+                if i==0:
+                    low_=low
+                    high_=high
+                    i+=1
+                return False
+            low+=1
+            high-=1
+        return True
+    if solv(s,low_,high_):
+        return True
+    else:
+        return solv(s,low_+1,high_) or solv(s,low_,high_-1)
             
 print(x("aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"))
