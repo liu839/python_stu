@@ -14,7 +14,7 @@ list_dirname=os.listdir(dirname)
 
 for eachname in list_dirname:
     wb2=openpyxl.load_workbook(eachname)
-    ws2=wb2["Sheet1"]
+    ws2=wb2["学生答题详情表"]
     print("正在判断%s"%(eachname))
     for each in ws1['A1':'L1']:
         #识别目前在判断什么成绩
@@ -23,13 +23,15 @@ for eachname in list_dirname:
                 score_1_col=dict_[i.value]
                 score_2_col=score_1_col
                 break
-
+        score_2_col='D'
     for i_1 in range(2,ws1.max_row+1):
     #实际转录模块
         name_1_sign='C'+str(i_1)
         name_1=ws1[name_1_sign].value
         score_1_sign=score_1_col+str(i_1)
-        score_1=ws1[score_1_sign].value   
+        score_1=ws1[score_1_sign].value
+        if score_1!=None:
+            continue
         for i_2 in range(2,ws2.max_row+1):
             name_2_sign='C'+str(i_2)
             name_2=ws2[name_2_sign].value
