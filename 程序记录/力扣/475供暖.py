@@ -1,5 +1,5 @@
 class Solution:
-    def findRadius(self, houses: List[int], heaters: List[int]) -> int:
+    def findRadius(houses,heaters):
         heaters.append(float("inf"))
         houses.sort()
         heaters.sort()
