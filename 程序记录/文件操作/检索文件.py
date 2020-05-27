@@ -29,6 +29,8 @@ def search(list1,temp_dir):
     except PermissionError:
         return
     for each in list1:
+        if each[0]=='.':
+            continue
         #print("正在检索文件"+each)
         if os.path.isdir(each):
             if '$' in each:
@@ -46,8 +48,8 @@ def search(list1,temp_dir):
             temp9='发现文件,位置为'+temp8
             eg.msgbox(msg=temp9,title=title)
             temp_10=eg.buttonbox(msg='是否继续',choices=("是","否"))
-            if temp_10=='否':
-                return
+            if temp_10=="否":
+                raise EOFError
             #print("发现文件,位置为%s\n"%(temp8))
             #count(temp8)
 search(list1,temp_dir)
