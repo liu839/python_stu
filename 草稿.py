@@ -1,3 +1,6 @@
-def solv(nums):
-    
-print(solv([1,2,1,3,2,5]))
+a=input()
+b=input().split(" ")
+c=list(map(int,b))
+
+
+
