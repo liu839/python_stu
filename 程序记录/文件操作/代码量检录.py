@@ -13,6 +13,8 @@ def count(dir_name):
     os.chdir(dir_name)
     list_dir=os.listdir()
     for each in list_dir:
+        if each == "node_modules":
+            continue
         if os.path.isdir(each):
             dir_name2=(dir_name+'\\'+each)  #获取实际名称
             count(dir_name2)                #进入递归  使用的为DFS算法
@@ -34,7 +36,7 @@ list_result=[]
 sum_1=0
 for each in dict_:
     sum_1+=dict_[each]
-    each=each+'有'+str(list_dict[file_houzhui.index(each)])+'个文件,'+each+'有'+str(dict_[each])+'行代码'+'\n'
+    each=each[1:]+'有'+str(list_dict[file_houzhui.index(each)])+'个文件,'+each+'有'+str(dict_[each])+'行代码'+'\n'
     list_result.append(each)
 text='你的目标是十万行代码还差'+str(100000-sum_1)+'行,已完成'+str(float(sum_1)/1000)+'%,加油啊.'
 eg.textbox(msg=text,title='统计代码量',text=list_result)
