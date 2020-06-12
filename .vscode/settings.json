@@ -1,4 +1,5 @@
 {
     "python.pythonPath": "C:\\Users\\71037\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "python.linting.pylintArgs": [ "----extension-pkg-whitelist=1xml" ],
     "C_Cpp.errorSquiggles": "Disabled"
 }
