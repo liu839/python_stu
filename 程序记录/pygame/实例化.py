@@ -9,18 +9,20 @@ bg = (255, 255, 255)                #背板颜色
 ratio = 1.0                         #缩放比例
 
 
-clock = pygame.time.Clock()
+clock = pygame.time.Clock()         #锁帧
 screen = pygame.display.set_mode(size,RESIZABLE)
 pygame.display.set_caption("初次见面")
 
 turtle = pygame.image.load(r"C:\Users\71037\Desktop\计算机\python\程序记录\pygame\pic\turtle.png")
+l_head = turtle
+r_head = pygame.transform.flip(turtle, True, False)
+
 oturtle = turtle
-oturtle_rect= oturtle.get_rect()
+oturtle_rect = oturtle.get_rect()
 
 position = turtle_rect = oturtle_rect
 
-l_head = turtle
-r_head = pygame.transform.flip(turtle, True, False)
+
 
 while True:
     speed=[0, 0]
@@ -45,22 +47,31 @@ while True:
         if event.key == K_UP or event.key == K_w:
             speed[1] -= 1
         if event.key == K_DOWN or event.key == K_s:
-            speed[1] += 1
-    
+            speed[1] += 1 
+        if event.key == K_EQUALS or event.key == K_MINUS or event.key == K_SPACE:
+        #放大或者缩小乌龟
+            if event.key == K_EQUALS and ratio<2.0:
+                ratio += 0.01
+            if event.key == K_MINUS and ratio>0.5:
+                ratio -= 0.01
+            if event.key == K_SPACE:
+                ratio = 1.0
+            #修改对应的两个surface对象 l_head,r_head
+            turtle = pygame.transform.smoothscale(oturtle,(int(oturtle_rect.width*ratio), int(oturtle_rect.height*ratio)))
+            l_head = turtle
+            r_head = pygame.transform.flip(turtle, True, False)
+
+            turtle_rect = turtle.get_rect()
+            position.width, position.height, = turtle_rect.width, turtle_rect.height
+
     if event.type == VIDEORESIZE:
     #检测窗口化
         size = event.size
         width, height = size
         print(size)
         screen = pygame.display.set_mode(size, RESIZABLE)
-    if event.key == K_EQUALS or event.key == K_MINUS or event.key == K_SPACE:
-    #放大或者缩小乌龟
-        if event.key == K_EQUALS and ratio<2.0:
-            ratio += 0.1
-        if event.key == K_MINUS and ratio>0.5:
-            ratio -= 0.1
-        if event.key == K_SPACE:
-            ratio = 1.0
+   
+    
 
     if position.left <0:
     #调换方向
