@@ -71,7 +71,6 @@ while True:
         print(size)
         screen = pygame.display.set_mode(size, RESIZABLE)
    
-
     if position.left <0:
     #调换方向
         speed[0]=1
