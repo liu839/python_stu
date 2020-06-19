@@ -14,9 +14,12 @@ screen = pygame.display.set_mode(size,RESIZABLE)
 pygame.display.set_caption("初次见面")
 
 turtle = pygame.image.load(r"C:\Users\71037\Desktop\计算机\python\程序记录\pygame\pic\turtle.png")
+
+#分别创建左右朝向的surface对象
 l_head = turtle
 r_head = pygame.transform.flip(turtle, True, False)
 
+#创建缩放的对象
 oturtle = turtle
 oturtle_rect = oturtle.get_rect()
 
@@ -27,7 +30,7 @@ position = turtle_rect = oturtle_rect
 while True:
     speed=[0, 0]
     for event in pygame.event.get():
-    #判断退出
+        #判断退出
         if event.type == pygame.QUIT:
             sys.exit()
     if event.type == KEYDOWN:
@@ -49,7 +52,7 @@ while True:
         if event.key == K_DOWN or event.key == K_s:
             speed[1] += 1 
         if event.key == K_EQUALS or event.key == K_MINUS or event.key == K_SPACE:
-        #放大或者缩小乌龟
+            #放大或者缩小乌龟
             if event.key == K_EQUALS and ratio<2.0:
                 ratio += 0.01
             if event.key == K_MINUS and ratio>0.5:
@@ -61,19 +64,19 @@ while True:
             l_head = turtle
             r_head = pygame.transform.flip(turtle, True, False)
 
+            #获取新尺寸
             turtle_rect = turtle.get_rect()
             position.width, position.height, = turtle_rect.width, turtle_rect.height
 
     if event.type == VIDEORESIZE:
-    #检测窗口化
+        #检测窗口化
         size = event.size
         width, height = size
         print(size)
         screen = pygame.display.set_mode(size, RESIZABLE)
-   
-   
-    if position.left <0:
+    
     #调换方向
+    if position.left <0:
         speed[0]=1
     elif position.right>width:
         speed[0]=-1
