@@ -2,9 +2,9 @@ import easygui as eg
 import os
 eg.msgbox("检录代码量程序")
 dir_name=eg.diropenbox()
-file_houzhui=['.py','.html','.asp','.cpp','.c','.js']
+file_houzhui=['.py','.html','.asp','.cpp','.c','.js','.css','.php']
 dict_={}
-list_dict=[0,0,0,0,0,0,0]                       #依次存储一个
+list_dict=[0,0,0,0,0,0,0,0]                       #依次存储一个
 list_i=0
 def count(dir_name):
     global file_houzhui
@@ -36,7 +36,7 @@ list_result=[]
 sum_1=0
 for each in dict_:
     sum_1+=dict_[each]
-    each=each[1:]+'有'+str(list_dict[file_houzhui.index(each)])+'个文件,'+each+'有'+str(dict_[each])+'行代码'+'\n'
+    each=each[1:]+'有'+str(list_dict[file_houzhui.index(each)])+'个文件,'+each[1:]+'有'+str(dict_[each])+'行代码'+'\n'
     list_result.append(each)
 text='你的目标是十万行代码还差'+str(100000-sum_1)+'行,已完成'+str(float(sum_1)/1000)+'%,加油啊.'
 eg.textbox(msg=text,title='统计代码量',text=list_result)
