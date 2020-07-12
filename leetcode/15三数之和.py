@@ -15,7 +15,6 @@ def x(nums):
             except:
                 pass
     return res
-                
 
 print(x([-1,0,1,2,-1,-4]))
     
