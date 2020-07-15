@@ -21,7 +21,10 @@ def reverse(x):
         return 0
     return int(str1)
 
-"""     def reverse(self, x: int) -> int:
+""" def reverse(self, x: int) -> int:
         y=int(str(x)[::-1]) if x>=0 else -int(str(x)[:0:-1])
-        return y if -2**31<y<2**31-1 else 0 """
+        return y if -2**31<y<2**31-1 else 0 
+        
+    7.15添加做法    
+"""
 print(reverse(-12300))
