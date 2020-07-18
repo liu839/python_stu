@@ -4,11 +4,29 @@ def solv(num):
     key=iter(dict_)
     each=key.__next__()
     while True:
-        if num==0:
+        if num == 0:
             break
-        if num-each<0:
-            each=key.__next__()
+        if num - each < 0:
+            each = key.__next__()
+        else:
+            num -= each
+            str_ += dict_[each]
+    return str_
+
+def solv2(num):
+    nums = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    romans = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    str_ = ''
+
+    key=iter(nums)
+    each=key.__next__()
+    while True:
+        if num == 0:
+            break
+        if num < each:
+            each = key.__next__()
         else:
             num-=each
-            str_+=dict_[each]
+            str_+=romans[nums.index(each)]
     return str_
+print(solv2(3))
