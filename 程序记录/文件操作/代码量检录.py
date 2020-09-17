@@ -2,7 +2,7 @@ import easygui as eg
 import os
 eg.msgbox("检录代码量程序")
 dir_name=eg.diropenbox()
-file_houzhui=['.py','.html','.asp','.cpp','.c','.js','.css','.php']
+file_houzhui=['.py','.html','.asp','.cpp','.c','.js','.css','.php', 'vue']
 dict_={}
 list_dict=[0,0,0,0,0,0,0,0]                       #依次存储一个
 list_i=0
