@@ -10,14 +10,12 @@ def solv(nums):
             if dep == size:
                 res.append(path[:])
                 return
-
             for i in range(size):
                 if not used[i]:
                     used[i] = True
                     path.append(nums[i])
 
                     dfs(nums, size, dep + 1, path, used)
-
                     used[i] = False
                     path.pop()
         dfs(nums, len(nums), 0, [], used)
@@ -37,5 +35,20 @@ print(solv([1,2,3]))
         res = []
         solv([], nums)
         return res
+"""
+"""
+data:10/15
+class Solution:
+    def make(self, nums, res):
+        if not nums:
+            self.res.append(res)
+            return
+        for index,each in enumerate(nums):
+            self.make(nums[:index]+nums[index+1:], res+[each])
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        self.res = []
+        self.make(nums, [])
+        return self.res
 """
             
