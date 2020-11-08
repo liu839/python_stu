@@ -2,9 +2,9 @@ import easygui as eg
 import os
 eg.msgbox("检录代码量程序")
 dir_name=eg.diropenbox()
-file_houzhui=['.py','.html','.asp','.cpp','.c','.js','.css','.php', 'vue']
+file_houzhui=['.py','.html','.asp','.cpp','.c','.js','.css' 'vue']#忽略PHP
 dict_={}
-list_dict=[0,0,0,0,0,0,0,0]                       #依次存储一个
+list_dict=[0 for _ in file_houzhui]                       #依次存储一个
 list_i=0
 def count(dir_name):
     global file_houzhui

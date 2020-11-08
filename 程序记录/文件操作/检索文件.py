@@ -13,7 +13,7 @@ list1=os.listdir()
 def count(name):
     global i
     global sign
-  #  print("检索文件%s中..."%(name))
+    #  print("检索文件%s中..."%(name))
     f=open(name,'rb')
     count=1
     for each in f:
