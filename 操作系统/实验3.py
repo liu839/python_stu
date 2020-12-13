@@ -32,7 +32,7 @@ class Freelink:
         self.sort()
 
     def show(self):
-        print("\n当前的空闲分区链为")
+        print("当前的空闲分区链为")
         for i in range(len(self.pos)):
             print("第%s块区域---起始点:%s, 大小为:%s"%(i+1, self.pos[i][0], self.pos[i][2]))
         print()
@@ -40,14 +40,18 @@ class Freelink:
             print("%s在%s-%s区域"%(id,self.id[id][0],self.id[id][1]))
 
 a = Freelink(640,64)
+print("----------------------------------------------------------------\nt1时刻：")
 a.show()
 a.distribution(8,'a')
 a.distribution(16,'b')
 a.distribution(64,'c')
 a.distribution(124,'d')
+print("----------------------------------------------------------------\nt2时刻：")
 a.show()
 a.free('c')
+print("----------------------------------------------------------------\nt3时刻：")
 a.show()
 a.distribution(50,'e')
+print("----------------------------------------------------------------\nt4时刻：")
 a.show()
 a.free('d')

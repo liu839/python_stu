@@ -39,7 +39,6 @@ def test(p, work, id_list, used):
         print("已找到安全序列", id_list)
         raise EOFError
     p_queue = [a for a in p if a.need <= work]
-
     while p_queue:
         p_temp = p_queue.pop(0)
         used.append(p_temp)
@@ -51,10 +50,10 @@ def banker(p, available ,request, id):
     process_re = p.pop(0)
     if not process_re.need >= request:
         print("需求大于申请,驳回")
-        return
+        return False
     if not available >= request:
         print("资源不足,请求失败")
-        return
+        return False
 
     process_re.allocation += request
     process_re.need -= request
@@ -64,8 +63,8 @@ def banker(p, available ,request, id):
     try:
         test(p, available, [], [])
         print("会出现不安全状态")
-        return
+        return False
     except EOFError:
-        return
+        return True
 
 banker(p, available, Mylist([1, 0, 2]), 1)
