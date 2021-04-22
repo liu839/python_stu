@@ -18,14 +18,15 @@ c, addr = s.accept()
 print("accepted ------------\n连接地址：", addr)
 
 def secret_in(inputstr):
-    res = ''.join([str(ord(each))+" " for each in inputstr])
+    res = ' '.join([str(ord(each)) for each in inputstr])
     res = base64.b64encode(res.encode("utf-8"))
+    print("发送的源数据为:",res)
     return res
 
 def secret_out(inputstr):
     print("未解析字符串"+ str(inputstr))
-    res = base64.b64decode(inputstr)
-    res = res.decode("utf-8")
+    res = base64.b64decode(inputstr).decode('utf-8')
+    res = ''.join([chr(int(each)) for each in res.strip().split(' ')])
     return res
 
 while True:
@@ -37,6 +38,6 @@ while True:
     res =secret_out(c.recv(1024))
 
     if res.strip():
-        print("接受到信息%s:\n" % res)
+        print("解析完成后:%s\n" % res)
 
 c.close()
