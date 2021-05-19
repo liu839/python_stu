@@ -1,4 +1,4 @@
-from tkinter import Tk,StringVar,Label,Entry,Button,mainloop
+from tkinter import Tk,StringVar,Label,Entry,Button,mainloop, Menu
 from  tkinter  import ttk
 from easygui import msgbox,fileopenbox
 master = Tk()
@@ -56,34 +56,60 @@ def show(*args):
 				score_2.set(data.score_2)
 				score.set(data.score)
 				
-# def add():
-#   data = Student(number_show.get(), name.get(), score_1.get(), score_2.get())
-#   students.append(data)
-#   student_hash[data.number] = len(students)-1
-#   e1['values'] += (data.number,)
-# def change():
-# 	pass
-# def chooseMenu():
-#   b2.grid_remove()
-#   b3.grid_remove()
-#   b1.grid()
-# def addMenu():
-#   b1.grid_remove()
-#   b3.grid_remove()
-#   b2.grid()
-# def changeMenu():
-#   b2.grid_remove()
-#   b1.grid()
-#   b3.grid()
-# menubar = Menu(master)
-# choosemenu = Menu(menubar, tearoff=0)
+def add():
+  data = Student(number_show.get(), name.get(), score_1.get(), score_2.get())
+  students.append(data)
+  student_hash[data.number] = len(students)-1
+  e1['values'] += (data.number,)
+def change():
+	pass
 
-# menubar.add_cascade(label='选择功能', menu=choosemenu)
-# choosemenu.add_command(label='查找', command=chooseMenu)
-# choosemenu.add_command(label='添加', command=addMenu)
-# choosemenu.add_command(label='修改', command=changeMenu)
+def delete():
+  number = number_show.get()
+  item = student_hash[number]
+  students.remove(item)
+  e1['values'] = [each.number for each in students] 
+  number_show.set("已删除")
+  name.set("")
+  score_1.set("")
+  score_2.set("")
+  score.set("")
 
-# master.config(menu=menubar)
+def save():
+  with open(file_name, 'w') as f:
+    for each in students:
+      f.writelines('{} {} {} {}\n'.format(each.number, each.name, each.score_1, each.score_2))
+    number_show.set("保存成功")
+def chooseMenu():
+  b2.grid_remove()
+  b3.grid_remove()
+  b4.grid_remove()
+  b1.grid()
+def addMenu():
+  b1.grid_remove()
+  b3.grid_remove()
+  b4.grid_remove()
+  b2.grid()
+def changeMenu():
+  b2.grid_remove()
+  b4.grid_remove()
+  b1.grid()
+  b3.grid()
+def deleteMenu():
+  b2.grid_remove()
+  b3.grid_remove()
+  b1.grid()
+  b4.grid()
+menubar = Menu(master)
+choosemenu = Menu(menubar, tearoff=0)
+
+menubar.add_cascade(label='选择功能', menu=choosemenu)
+choosemenu.add_command(label='查找', command=chooseMenu)
+choosemenu.add_command(label='添加', command=addMenu)
+choosemenu.add_command(label='修改', command=changeMenu)
+choosemenu.add_command(label='删除', command=deleteMenu)
+
+master.config(menu=menubar)
 
 Label(master, text="输入学号").grid(row=0)
 
@@ -110,11 +136,20 @@ e6 = Entry(master,textvariable = number_show).grid(row=1,column=1, padx=10, pady
 b1 = Button(master, text="查找信息", width=10, command=show)
 b1.grid(row=0, column=2, padx=10, pady=5)
 #stick表示方位
-# b2 = Button(master, text="添加信息", width=10, command=add)
-# b2.grid(row=0, column=2, padx=10, pady=5)
-# b2.grid_remove()
+b2 = Button(master, text="添加信息", width=10, command=add)
+b2.grid(row=0, column=2, padx=10, pady=5)
+b2.grid_remove()
 
-# b3 = Button(master, text="修改信息", width=10, command=change)
-# b3.grid(row=0, column=3, padx=10, pady=5)
-# b3.grid_remove()
+b3 = Button(master, text="修改信息", width=10, command=change)
+b3.grid(row=0, column=3, padx=10, pady=5)
+b3.grid_remove()
+
+b4 = Button(master, text="删除信息", width=10, command=delete)
+b4.grid(row=0, column=3, padx=10, pady=5)
+b4.grid_remove()
+
+b5 = Button(master, text="保存信息", width=10, command=save)
+b5.grid(row=5, column=3, padx=10, pady=5)
+
+
 mainloop()
